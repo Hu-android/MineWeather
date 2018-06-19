@@ -1,0 +1,9 @@
+<litepal>
+    <dbname value="MineWeather"/>
+    <version value="1"/>
+    <list>
+        <mapping class="hjl.mineweather.db.Province"/>
+        <mapping class="hjl.mineweather.db.City"/>
+        <mapping class="hjl.mineweather.db.County"/>
+    </list>
+</litepal>
