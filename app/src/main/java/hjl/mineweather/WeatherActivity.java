@@ -1,5 +1,6 @@
 package hjl.mineweather;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
@@ -25,6 +26,7 @@ import java.io.IOException;
 
 import hjl.mineweather.gson.Forecast;
 import hjl.mineweather.gson.Weather;
+import hjl.mineweather.service.AutoUpdateService;
 import hjl.mineweather.util.HttpUtil;
 import hjl.mineweather.util.Utility;
 import okhttp3.Call;
@@ -195,7 +197,9 @@ public class WeatherActivity extends AppCompatActivity {
             }
         });
     }
-
+    /**
+     *  处理并展示Weather实体类中的数据
+     * */
     private void showWeatherInfo(Weather weather) {
         String cityName = weather.basic.cityName;
         String updateTime = weather.basic.update.updateTime.split(" ")[1];
@@ -229,6 +233,8 @@ public class WeatherActivity extends AppCompatActivity {
         carWashText.setText(carWash);
         sportText.setText(sport);
         weatherLayout.setVisibility(View.VISIBLE);
+        Intent intent = new Intent(this, AutoUpdateService.class);
+        startService(intent);
     }
 
     @Override
